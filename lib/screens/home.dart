@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:hexcolor/hexcolor.dart';
 import 'package:myapp/constants/color.dart';
+import 'package:myapp/constants/tasktype.dart';
+import 'package:myapp/model/task.dart';
 import 'package:myapp/screens/add_new_task.dart';
 import 'package:myapp/todoitem.dart';
 
@@ -12,8 +14,16 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
-  List<String> todo = ["Study lessons", "Run 5K", "Go to party"];
-  List<String> completed = ["Game meetup", "Take out thrash"];
+  //List<String> todo = ["Study lessons", "Run 5K", "Go to party"];
+  //List<String> completed = ["Game meetup", "Take out thrash"];
+  List<Task> todo = [
+    Task(
+      type: Tasktype.note,
+      title: "Study Lessons",
+      description: "Study COMP117",
+      isCompleted: false,
+    )
+  ];
   @override
   Widget build(BuildContext context) {
     double deviceHeight = MediaQuery.of(context).size.height;
@@ -70,37 +80,13 @@ class _HomeScreenState extends State<HomeScreen> {
                     itemCount: todo.length,
                     itemBuilder: (context, index) {
                       return TodoItem(
-                        title: todo[index],
+                        task: todo[index],
                       );
                     },
                   ),
                 ),
               ),
             ),
-            // Completed Text
-            const Padding(
-              padding: EdgeInsets.only(left: 20),
-              child: Align(
-                  alignment: Alignment.centerLeft,
-                  child: Text(
-                    "Completed",
-                    style: TextStyle(fontWeight: FontWeight.bold, fontSize: 18),
-                  )),
-            ),
-            // Buttom Column
-            Expanded(
-                child: Padding(
-              padding: const EdgeInsets.fromLTRB(20, 10, 20, 10),
-              child: SingleChildScrollView(
-                child: ListView.builder(
-                    primary: false,
-                    shrinkWrap: true,
-                    itemCount: completed.length,
-                    itemBuilder: (context, index) {
-                      return TodoItem(title: completed[index]);
-                    }),
-              ),
-            )),
             ElevatedButton(
               onPressed: () {
                 Navigator.of(context).push(MaterialPageRoute(
