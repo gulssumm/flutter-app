@@ -4,6 +4,7 @@ import 'package:myapp/constants/color.dart';
 import 'package:myapp/constants/tasktype.dart';
 import 'package:myapp/model/task.dart';
 import 'package:myapp/screens/add_new_task.dart';
+import 'package:myapp/service/todo_service.dart';
 import 'package:myapp/todoitem.dart';
 
 class HomeScreen extends StatefulWidget {
@@ -33,6 +34,9 @@ class _HomeScreenState extends State<HomeScreen> {
 
   @override
   Widget build(BuildContext context) {
+    TodoService todoService = TodoService();
+    todoService.getTodos();
+
     double deviceHeight = MediaQuery.of(context).size.height;
     double deviceWidth = MediaQuery.of(context).size.width;
 
