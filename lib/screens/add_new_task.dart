@@ -184,6 +184,7 @@ class _AddNewTaskScreenState extends State<AddNewTaskScreen> {
                       isCompleted: false,
                     );
                     widget.addNewTask(newTask);
+                    Navigator.pop(context);
                   },
                   child: const Text("Save"))
             ],

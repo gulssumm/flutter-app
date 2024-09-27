@@ -26,7 +26,9 @@ class _HomeScreenState extends State<HomeScreen> {
   ];
 
   void addNewTask(Task newTask) {
-    todo.add(newTask);
+    setState(() {
+      todo.add(newTask);
+    });
   }
 
   @override
