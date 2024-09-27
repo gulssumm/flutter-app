@@ -175,7 +175,17 @@ class _AddNewTaskScreenState extends State<AddNewTaskScreen> {
                       filled: true, fillColor: Colors.white, isDense: true),
                 ),
               ),
-              ElevatedButton(onPressed: () {}, child: const Text("Save"))
+              ElevatedButton(
+                  onPressed: () {
+                    Task newTask = Task(
+                      type: taskType,
+                      title: titleController.text,
+                      description: descriptionController.text,
+                      isCompleted: false,
+                    );
+                    widget.addNewTask(newTask);
+                  },
+                  child: const Text("Save"))
             ],
           ),
         ),
