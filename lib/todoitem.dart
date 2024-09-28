@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:myapp/constants/tasktype.dart';
 import 'package:myapp/model/todo.dart';
 
 class TodoItem extends StatefulWidget {
@@ -23,7 +22,8 @@ class _TodoItemState extends State<TodoItem> {
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: [
-            /*TODO: Firebase islemlerinde duzelt widget.task.type == Tasktype.note
+            /*TODO: Firebase islemlerinde duzelt 
+            widget.task.type == Tasktype.note
                 ? Image.asset("lib/assets/images/category_1.png")
                 : widget.task.type == Tasktype.contest
                     ? Image.asset("lib/assets/images/category_3.png")

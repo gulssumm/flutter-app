@@ -85,10 +85,11 @@ class _HomeScreenState extends State<HomeScreen> {
                 padding: const EdgeInsets.fromLTRB(20, 10, 20, 10),
                 child: SingleChildScrollView(
                   child: FutureBuilder(
-                      future: todoService.getUncompletedTodos(),
+                      future: todoService.getTodos(),
                       builder: (context, snapshot) {
                         if (snapshot.data == null) {
                           return const CircularProgressIndicator();
+                          // loading symbol will show
                         } else {
                           return ListView.builder(
                             primary: false,

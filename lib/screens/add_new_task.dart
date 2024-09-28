@@ -3,6 +3,7 @@ import 'package:hexcolor/hexcolor.dart';
 import 'package:myapp/constants/color.dart';
 import 'package:myapp/constants/tasktype.dart';
 import 'package:myapp/model/task.dart';
+import 'package:myapp/model/todo.dart';
 
 class AddNewTaskScreen extends StatefulWidget {
   const AddNewTaskScreen({super.key, required this.addNewTask});
@@ -15,7 +16,7 @@ class AddNewTaskScreen extends StatefulWidget {
 
 class _AddNewTaskScreenState extends State<AddNewTaskScreen> {
   TextEditingController titleController = TextEditingController();
-  TextEditingController dateController = TextEditingController();
+  TextEditingController useridController = TextEditingController();
   TextEditingController timeController = TextEditingController();
   TextEditingController descriptionController = TextEditingController();
   Tasktype taskType = Tasktype.note;
@@ -131,12 +132,12 @@ class _AddNewTaskScreenState extends State<AddNewTaskScreen> {
                     Expanded(
                       child: Column(
                         children: [
-                          const Text("Date"),
+                          const Text("User Id"),
                           Padding(
                               padding:
                                   const EdgeInsets.symmetric(horizontal: 20),
                               child: TextField(
-                                controller: dateController,
+                                controller: useridController,
                                 decoration: const InputDecoration(
                                     filled: true, fillColor: Colors.white),
                               ))
@@ -192,5 +193,13 @@ class _AddNewTaskScreenState extends State<AddNewTaskScreen> {
         ),
       ),
     );
+  }
+
+  void saveTodo() {
+    Todo newTodo = Todo(
+        id: -1,
+        todo: titleController.text,
+        completed: false,
+        userId: int.parse(useridController.text));
   }
 }
